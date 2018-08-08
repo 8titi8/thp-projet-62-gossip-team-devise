@@ -1,15 +1,25 @@
-<h2>Sign up</h2>
+<h2>Inscris toi !</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :sign_up_code, "Ton code secret" %><br />
+    <%= f.text_field :sign_up_code %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :username, "Ton pseudo" %><br />
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "Ton email" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :password, "Ton mode de passe" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -17,13 +27,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Confirme ton mot de passe" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "S'inscrire" %>
   </div>
 <% end %>
-
+<hr>
 <%= render "moussaillons/shared/links" %>
+<br>

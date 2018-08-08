@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+body .container {
+  padding-top: 2em
+}
+
+body .container .list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+ body .container .line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ }
+
+ body .container .cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ }

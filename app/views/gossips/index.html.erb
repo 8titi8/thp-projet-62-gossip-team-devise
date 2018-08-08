@@ -1,2 +1,38 @@
-<h1>Gossips#index</h1>
-<p>Find me in app/views/gossips/index.html.erb</p>
+
+
+<% if moussaillon_signed_in? %>
+<h2>Du frais, du beau et on en redemande !</h2>
+  <h4>Nos membres sont particulièrement inspirés.. je suis sûr que vous trouverez quelques perles qui vous plairont ! </h4>
+  <%= link_to("Je veux bitcher", new_gossip_path , class: "btn btn-info") %>
+
+  <hr>
+
+  <h4 class="index">Les gossips</h4>
+    <div class="list">
+      <% @gossips.each do |gossip| %>
+      <div class="line">
+        <div class="cell">
+       <q><%= gossip.content.capitalize %></q>
+       </div>
+       <div class="cell">
+        <%= Moussaillon.find_by(id: gossip.moussaillon_id).username %>
+      </div>
+        <div class="cell">
+        Le <%= gossip.created_at.strftime("%d %b. %Y")  %>
+        à <%= gossip.created_at.strftime("%H:%M") %>
+        <% @id = gossip.id  %>
+        </div>
+        <div class="cell">
+        <% if gossip.moussaillon_id == current_moussaillon.id %>
+          <span class="delete"><%= link_to("Supprimer", "gossips/#{@id}", method: :delete) %> </span><br>
+          <% end %>
+          </div>
+          </div>
+      <% end %>
+    </div>
+<% else %>
+<h2>C'est le moment de bitcher..</h2>
+  <h4>Mais pour cela il faut te <%= link_to("connecter", new_moussaillon_registration_path) %> ou <%= link_to("t'inscrire", new_moussaillon_session_path) %>..</h4>
+  <p>..viens me susurrer à l'oreille, je sens que je vais adorer ça !</p>
+
+<% end %>

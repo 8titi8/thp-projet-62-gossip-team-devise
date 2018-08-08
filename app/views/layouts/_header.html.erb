@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-md navbar-light rounded" style="background-color: #7DDAD8">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= home_path %>">Gossips<span class="sr-only">(current)</span></a>
+      </li>
+      <% if moussaillon_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="<%= new_gossip_path %>">Nouveau gossip</a>
+        </li>
+        <li class="nav-item">
+        <span class="nav-link disabled">
+          <%= link_to "Me déconnecter",  destroy_moussaillon_session_path, method: :delete  %>
+        </span>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="<%= new_moussaillon_registration_path %>">S'inscrire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="<%= new_moussaillon_session_path %>">Se connecter</a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

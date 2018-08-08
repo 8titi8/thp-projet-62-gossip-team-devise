@@ -1,2 +1,9 @@
-<h1>Gossips#new</h1>
-<p>Find me in app/views/gossips/new.html.erb</p>
+<h2>Toi aussi, écris ton gossip !</h2>
+
+<h4>Tapes ici ce que tu veux nous dire de si brûlant :</h4>
+
+<%= form_for @gossip, url: {action: 'create'} do |f| %>
+  <%= f.text_area :content, size: "70x5" %> <br><br>
+  <%= f.submit "Bitcher", class: "btn btn-lg btn-info"  %>
+<% end %>
+
